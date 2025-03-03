@@ -8,12 +8,14 @@ function RelatedDoctors({ docId,speciality }) {
     const { doctors } = useContext(AppContext);
     const [relDoc, setrelDoc] = useState([]);
     const navigate = useNavigate();
+    console.log(docId,speciality)
 
 
     // useEffect(() => {
         // if (doctors.length > 0 && speciality) {
-            // const doctorsData = doctors.filter((doc) => doc.speciality === speciality && doc._id !== docId);
+            const doctorsData = doctors.filter((doc) => doc.speciality === speciality && doc._id !== docId);
             // setrelDoc(doctorsData);
+            // console.log(doctorsData)
         // }
     // })
 
@@ -22,7 +24,7 @@ function RelatedDoctors({ docId,speciality }) {
                 <h1 className='text-3xl font-medium'>Related Doctors</h1>
                 <p className='sm:w-1/3 text-center text-sm'> Simply browse through our extensive list of trusted doctors.</p>
                 <div className='w-ful grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 pt-5 gap-y-6 px-3 sm:px-0'>
-                    {/* {doctors.map((item, index) => (
+                    {doctorsData.map((item, index) => (
                         <div onClick={() => {navigate(`/appointment/${item._id}`);scrollTo(0,0)}} key={index} className='border border-green-300 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500 '>
                             <img className='bg-green-50 ' src={item.image} alt='' />
                             <div className='p-4 '>
@@ -33,7 +35,7 @@ function RelatedDoctors({ docId,speciality }) {
                                 <p className='text-gray-900 text-sm'>{item.speciality}</p>
                             </div>
                         </div>
-                    ))} */}
+                    ))}
                 </div>
 
             </div>

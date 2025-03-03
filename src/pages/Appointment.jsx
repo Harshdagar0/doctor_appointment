@@ -75,7 +75,7 @@ function Appointment() {
     <div className='my-10'>
       {docInfo !== null &&
         <div className='flex flex-col sm:flex-row  gap-4'>
-          <div className='border border-green-500 w-full sm:w-72 bg-green-100 rounded-lg' >
+          <div className='border flex justify-center border-green-500 w-full sm:w-72 bg-green-100 rounded-lg' >
             <img className='' src={docInfo.image} alt='' />
           </div>
           <div className='flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0'>
@@ -101,7 +101,7 @@ function Appointment() {
         <p className='text-xl text-gray-600'>Booking slots</p>
         <div className='flex space-x-6 mt-3 overflow-scroll'>
           {docSlots.length && docSlots.map((item, index) => (
-            <div key={index} className={` text-center border text-gray-500 border-gray-400 w-30 cursor-pointer  rounded-full ${indexSlots === index ? 'bg-green-400 text-white border-green-500' : ''}`} onClick={() => setindexSlots(index)} >
+            <div key={index} className={` text-center border text-gray-500 border-gray-400 w-30 cursor-pointer p-2 rounded-full ${indexSlots === index ? 'bg-green-400 text-white border-green-500' : ''}`} onClick={() => setindexSlots(index)} >
               <p>{item[0] && daysOfWeek[item[0].datatime.getDay()]}</p>
               <p>{item[0] && item[0].datatime.getDate()}</p>
             </div>
@@ -118,7 +118,7 @@ function Appointment() {
       <button className='mt-10  py-2 px-4 rounded-full text-white bg-green-500'>Book an appointment</button>
       </div>
 
-      {/* {docInfo !== null &&  <RelatedDoctors docId={docId}  speciality={docInfo.speciality}/>} */}
+      {docInfo !== null &&  <RelatedDoctors docId={docId}  speciality={docInfo.speciality}/>}
 
     </div>
   )

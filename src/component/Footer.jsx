@@ -3,8 +3,9 @@ import { assets } from '../assets/assets'
 
 function Footer() {
   return (
-    <div className='md:mx-10'>
-      <div className='flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14  my-10 mt-40 text-sm'>
+    <div className='md:mx-10 mt-20'>
+      <hr className='text-green-600'></hr>
+      <div className='flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14  mt-10 text-sm'>
         {/* left section  */}
         <div>
             <img className='w-32 mb-2' src={assets.logo1} alt=''/>
