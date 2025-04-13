@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { CgProfile } from 'react-icons/cg';
 import { GoKey } from 'react-icons/go';
 import { IoEyeOff, IoEyeSharp } from 'react-icons/io5';
 import { MdOutlineMailOutline } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
+import Loading from './Loading';
 
 function Registeration({sendDataToParent}){
- const [credentials, setCredentials] = useState({ name: '', username: '', email: '', password: '' });
+ const [credentials, setCredentials] = useState({ name: '', email: '', password: '' });
 const [rememberMe, setRememberMe] = useState(false);
 const [openEye, setopenEye] = useState(true);
 const [passwordVisible, setPasswordVisible] = useState(false);
+const {registerUser} = useContext(AppContext);
+const [loader,setLoader] = useState(false);
+
 const gradientStyle = {
     width: '100%',
     height: '1px',
@@ -28,12 +33,16 @@ const handleChange = (e) => {
 };
 
 const handleSubmit = (e) => {
+    setLoader(true);
     e.preventDefault();
-    console.log(credentials)
+    registerUser(credentials);
+    setLoader(false);
+    
 };
 
 const set = ()=>{
     sendDataToParent('login');
+    scroll(0,0);
 }
 
 const passwordEye = () => {
@@ -131,7 +140,9 @@ return (
                 />
                 <p className='text-gray-500 text-xs pt-4'>By creating an account, you agree to our <Link className='text-blue-500' to=""> Terms of Service</Link> and  <Link className='text-blue-500' to="">Privacy Policy.</Link>  </p>
             </div>
-            <button type='submit' className=' m-auto py-1 px-2 rounded-lg bg-green-500 text-white w-full'>Create Account</button>
+            <button type='submit' className='cursor-pointer m-auto py-1 px-2 rounded-lg bg-green-500 text-white w-full'>
+                {loader?<Loading/>:'Create Account'}
+                </button>
             <div>
                 <div className="text-center mt-4">
                     <div className='flex'>

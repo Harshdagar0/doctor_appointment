@@ -16,6 +16,6 @@
 
 @media(max-width:740px){
     .active li{
-        @apply text-white bg-green-500
+        @apply text-white bg-green-500  
     }
 }
