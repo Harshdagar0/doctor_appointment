@@ -134,6 +134,11 @@ function MyAppointment() {
           </div>
         ))}
         {allA.length===0&&<div className='text-center'>No Appointment yet</div>}
+        {!allA&&
+        <div className='text-2xl text-center'>
+          Loading...
+        </div>
+        }
 
 
       </div>

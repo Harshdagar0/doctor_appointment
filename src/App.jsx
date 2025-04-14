@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Route, Routes, } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, } from 'react-router-dom'
 import Home from './pages/Home'
 import Doctors from './pages/Doctors'
 import Contact from './pages/Contact'
@@ -18,6 +18,7 @@ const App = () => {
   const{ token }= useContext(AppContext);
   
   return (
+    <BrowserRouter>
     <div className='mx-4 sm:mx-[10%]'>
       <Navbar/>
       <Routes>
@@ -30,14 +31,17 @@ const App = () => {
 
         
         <Route path='/login' element={token?<Navigate to='/'/>:<LoginPage/>}/> 
+        <Route path='*' element={<Navigate to='/'/>}/> 
 
         <Route path='/myprofile' element={token?<Myprofile/>:<Navigate to='/login'/>}/> 
-        <Route path='/myappointments' element={token?<MyAppointment/>:<Navigate to='/login'/>}/> 
+        <Route path='/myappointments' element={token?<MyAppointment/>:<Navigate to='/login'/>}/>
+
 
       </Routes>
       <Footer/>
       <Toaster />
     </div>
+    </BrowserRouter>
   )
 }
 
