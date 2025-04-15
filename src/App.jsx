@@ -18,7 +18,6 @@ const App = () => {
   const{ token }= useContext(AppContext);
   
   return (
-    <BrowserRouter>
     <div className='mx-4 sm:mx-[10%]'>
       <Navbar/>
       <Routes>
@@ -41,7 +40,6 @@ const App = () => {
       <Footer/>
       <Toaster />
     </div>
-    </BrowserRouter>
   )
 }
 
