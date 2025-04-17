@@ -48,7 +48,7 @@ function Doctors() {
           <p className={`border lg:px-4 px-2 rounded-sm py-1 mx-3 border-gray-500 text-gray-500 hover:cursor-pointer ${speciality === 'Gastroenterologist' ? 'bg-green-50' : ''}`} onClick={() => { speciality === 'Gastroenterologist' ? navigate('/doctors') : navigate('/doctors/Gastroenterologist'); scrollTo(0, 0) }}>Gastroenterologist</p>
         </div>
 
-        <div className='w-full grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-4 pt-5 gap-y-6 px-3 sm:px-0 '>
+        {doctors ?<div className='w-full grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-4 pt-5 gap-y-6 px-3 sm:px-0 '>
 
           {doctors && Array.isArray(filterDoc) && filterDoc.map((item, index) => (
             <div onClick={() => { navigate(`/appointment/${item._id}`); scrollTo(0, 0) }} key={index} className='border border-green-300 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500 '>
@@ -74,7 +74,9 @@ function Doctors() {
             </div>
           ))}
 
-        </div>
+        </div>:
+        <div className=' text-2xl text-gray-400'> Loading...</div>
+        }
 
       </div>
 
